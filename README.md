@@ -1,53 +1,51 @@
-# Credit Approval System
+Credit Approval System
+A Django-based backend system that handles customer registration, loan eligibility checking, loan management, and asynchronous Excel data ingestion using Celery and Redis.
 
-This is a backend Django-based Credit Approval System that allows customer registration, loan eligibility checks, loan management, and background ingestion of Excel data using Celery and Redis.
+🚀 Features
+Customer Registration (/register)
 
----
+Loan Eligibility Check (/check-eligibility)
 
-## 🚀 Features
+Loan Creation (/create-loan)
 
-- Customer Registration (`/register`)
-- Loan Eligibility Check (`/check-eligibility`)
-- Loan Creation (`/create-loan`)
-- View Loan Details (`/view-loan/<loan_id>`)
-- View All Loans by Customer (`/view-loans/<customer_id>`)
-- Background Excel Upload:
-  - Upload Customer Data (`/upload-customer-excel`)
-  - Upload Loan Data (`/upload-loan-excel`)
+Loan Detail View (/view-loan/<loan_id>)
 
----
+View Customer Loans (/view-loans/<customer_id>)
 
-## 🛠️ Tech Stack
+Excel Upload (Async via Celery):
 
-- Python 3.11
-- Django 4+
-- Django REST Framework
-- PostgreSQL
-- Celery + Redis (for background tasks)
-- Docker & Docker Compose
-- Pandas & Openpyxl (for Excel processing)
+Upload Customer Data (/upload-customer-excel)
 
----
+Upload Loan Data (/upload-loan-excel)
 
-## ⚙️ Setup Instructions
+🛠️ Tech Stack
+Python 3.11
 
-### 1. Clone the Repo
+Django 4+
 
-```bash
+Django REST Framework
+
+PostgreSQL
+
+Celery + Redis (background task processing)
+
+Pandas & Openpyxl (Excel file parsing)
+
+Docker & Docker Compose
+
+⚙️ Setup Instructions
+1. Clone the Repository
+
 git clone https://github.com/your-username/credit-approval-system.git
 cd credit-approval-system
 
-### 2. Start the system using Docker
-bash
-Copy
-Edit
+2. Start Services with Docker
 docker-compose up --build
 
-### 3. Run Celery Worker in new terminal
-bash
-Copy
-Edit
+3. Run Celery Worker
+In a separate terminal:
 docker-compose exec web celery -A loan_management worker --loglevel=info
+
 
 ##  API Endpoints
 Method	          Endpoint                         	Description
