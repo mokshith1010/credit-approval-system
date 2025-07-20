@@ -1,49 +1,45 @@
-Credit Approval System
-A Django-based backend system that handles customer registration, loan eligibility checking, loan management, and asynchronous Excel data ingestion using Celery and Redis.
+# 💳 Credit Approval System
 
-🚀 Features
-Customer Registration (/register)
+This is a Django-based backend application designed for managing credit approvals. It allows for customer registration, checking loan eligibility, approving loans, viewing loan details, and uploading historical loan/customer data via Excel.
 
-Loan Eligibility Check (/check-eligibility)
+---
 
-Loan Creation (/create-loan)
+## 🚀 Features
 
-Loan Detail View (/view-loan/<loan_id>)
+- Register new customers
+- Check credit score and loan eligibility
+- Create/approve new loans
+- View loan details and list of loans per customer
+- Upload customer and loan data from Excel
+- All operations run inside Docker containers
+- Background data ingestion using Celery + Redis
 
-View Customer Loans (/view-loans/<customer_id>)
+---
 
-Excel Upload (Async via Celery):
+## 🛠️ Technologies Used
 
-Upload Customer Data (/upload-customer-excel)
+- Python 3.11
+- Django 4.x
+- Django REST Framework
+- PostgreSQL
+- Celery
+- Redis
+- Pandas + Openpyxl
+- Docker + Docker Compose
 
-Upload Loan Data (/upload-loan-excel)
+---
 
-🛠️ Tech Stack
-Python 3.11
+## 📦 Setup Instructions
 
-Django 4+
+### 1. Clone the repo
 
-Django REST Framework
-
-PostgreSQL
-
-Celery + Redis (background task processing)
-
-Pandas & Openpyxl (Excel file parsing)
-
-Docker & Docker Compose
-
-⚙️ Setup Instructions
-1. Clone the Repository
-
-git clone https://github.com/your-username/credit-approval-system.git
+git clone https://github.com/mokshith1010/credit-approval-system.git
 cd credit-approval-system
 
-2. Start Services with Docker
+### 2. Start the system using Docker
 docker-compose up --build
 
-3. Run Celery Worker
-In a separate terminal:
+### 3. Run Celery Worker in new terminal
 docker-compose exec web celery -A loan_management worker --loglevel=info
 
 
