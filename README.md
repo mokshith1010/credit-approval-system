@@ -1,11 +1,8 @@
 # 🚀 Credit Approval System
 
-The **Credit Approval System** is a scalable backend application designed to automate **loan eligibility evaluation and loan management** for financial institutions.  
-It provides a robust RESTful API to handle customer registration, credit eligibility checks, loan approvals, and loan history management.
+The **Credit Approval System** is a scalable backend application designed to automate **loan eligibility evaluation and loan management** for financial institutions. It provides a robust RESTful API to handle customer registration, credit eligibility checks, loan approvals, and loan history management.
 
 Built using **Django and Django REST Framework**, the system supports **asynchronous background processing** with **Celery and Redis**, ensuring efficient handling of bulk data operations such as Excel-based customer and loan uploads. The entire application is containerized using **Docker**, enabling consistent and seamless deployment across environments.
-
-This project demonstrates best practices in **backend architecture, REST API design, asynchronous task processing, and containerized deployment**.
 
 ---
 
@@ -47,34 +44,32 @@ This project demonstrates best practices in **backend architecture, REST API des
 Follow the steps below to run the application locally using Docker.
 
 ### 1️⃣ Clone the Repository
-```bash
 git clone https://github.com/mokshith1010/credit-approval-system.git
 cd credit-approval-system
-2️⃣ Start the Application using Docker
+
+### 2️⃣ Start the Application using Docker
 This command builds and starts all services including Django, PostgreSQL, Redis, and Celery.
 
-bash
-Copy code
 docker-compose up --build
-3️⃣ Run the Celery Worker (in a New Terminal)
+
+### 3️⃣ Run the Celery Worker (in a New Terminal)
 Celery processes background tasks such as Excel data ingestion.
 
-bash
-Copy code
 docker-compose exec web celery -A loan_management worker --loglevel=info
+
 Once all services are running, the API will be accessible locally.
 
-🔗 API Endpoints
+## 🔗 API Endpoints
 Customer & Loan APIs
-Method	Endpoint	Description
-POST	/register	Register a new customer
-POST	/check-eligibility	Check customer credit eligibility
-POST	/create-loan	Approve and create a loan
-GET	/view-loan/<loan_id>	View loan and customer details
-GET	/view-loans/<customer_id>	View all loans for a customer
+Method       Endpoint                 Description
+POST    /register	                 Register a new customer
+POST    /check-eligibility	       Check customer credit eligibility
+POST	  /create-loan	             Approve and create a loan
+GET     /view-loan/<loan_id>	     View loan and customer details
+GET	    /view-loans/<customer_id>	 View all loans for a customer
 
 Data Upload APIs
-Method	Endpoint	Description
-POST	/upload-customer-excel	Upload customer data from Excel
-POST	/upload-loan-excel	Upload loan data from Excel
+Method       Endpoint                 Description
+POST	   /upload-customer-excel	   Upload customer data from Excel
+POST	   /upload-loan-excel        Upload loan data from Excel
 
