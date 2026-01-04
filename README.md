@@ -44,32 +44,39 @@ Built using **Django and Django REST Framework**, the system supports **asynchro
 Follow the steps below to run the application locally using Docker.
 
 ### 1️⃣ Clone the Repository
-git clone https://github.com/mokshith1010/credit-approval-system.git
-cd credit-approval-system
+- git clone https://github.com/mokshith1010/credit-approval-system.git
+- cd credit-approval-system
 
 ### 2️⃣ Start the Application using Docker
 This command builds and starts all services including Django, PostgreSQL, Redis, and Celery.
 
-docker-compose up --build
+- docker-compose up --build
 
 ### 3️⃣ Run the Celery Worker (in a New Terminal)
 Celery processes background tasks such as Excel data ingestion.
 
-docker-compose exec web celery -A loan_management worker --loglevel=info
+- docker-compose exec web celery -A loan_management worker --loglevel=info
 
 Once all services are running, the API will be accessible locally.
 
 ## 🔗 API Endpoints
-Customer & Loan APIs
-Method       Endpoint                 Description
-POST    /register	                 Register a new customer
-POST    /check-eligibility	       Check customer credit eligibility
-POST	  /create-loan	             Approve and create a loan
-GET     /view-loan/<loan_id>	     View loan and customer details
-GET	    /view-loans/<customer_id>	 View all loans for a customer
 
-Data Upload APIs
-Method       Endpoint                 Description
-POST	   /upload-customer-excel	   Upload customer data from Excel
-POST	   /upload-loan-excel        Upload loan data from Excel
+### 📌 Customer & Loan APIs
+
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| POST | `/register` | Register a new customer |
+| POST | `/check-eligibility` | Check customer credit eligibility |
+| POST | `/create-loan` | Approve and create a loan |
+| GET | `/view-loan/<loan_id>` | View loan and customer details |
+| GET | `/view-loans/<customer_id>` | View all loans for a customer |
+
+---
+
+### 📊 Data Upload APIs
+
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| POST | `/upload-customer-excel` | Upload customer data from Excel |
+| POST | `/upload-loan-excel` | Upload loan data from Excel |
 
